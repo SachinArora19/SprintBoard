@@ -11,12 +11,12 @@ export class SignOutComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-   localStorage.clear();
+   localStorage.removeItem("isLoggedIn");
    let scope = this;
    setTimeout(() => {
     scope.router.navigate(["/welcome/home"]);
    }, 3000);
- 
+
   }
 
 }
