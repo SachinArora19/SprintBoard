@@ -1,0 +1,149 @@
+<div id="content" class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- Pie Grid Start -->
+        <div class="bg-light shadow-sm rounded row">
+          <h1 class="userChartTitle">User wise stories assigned</h1>
+          <ngx-charts-pie-grid [results]="userChartData"> </ngx-charts-pie-grid>
+        </div>
+        <!-- Pie Grid End -->
+
+        <!-- Task Board start
+          =============================== -->
+        <div class="bg-light shadow-sm rounded taskBoard row">
+          <div id="taskBoardTable">
+            <div class="row headerRow">
+              <label class="col-3"
+                >User Story<span
+                  (click)="AddOrUpdateUserStory('Story')"
+                  class="addIcon material-icons"
+                  >add_circle</span
+                ></label
+              >
+              <label class="col-3">Active</label>
+              <label class="col-3">Resolved</label>
+              <label class="col-3">Closed</label>
+            </div>
+            <div
+              *ngFor="let story of boardData"
+              class="row userStoryRow"
+              cdkDropListGroup
+            >
+              <div class="cells col-3">
+                <app-task-board-work-item
+                  (dataChangeEvent)="GridDataChanged($event)"
+                  (openDialogToUpdateDataEvent)="openDialogToUpdateData($event, 'Story')"
+                  (openDialogToAddTaskEvent)="AddTaskOrBug('Task',$event)"
+                  (openDialogToAddBugEvent)="AddTaskOrBug('Bug',$event)"
+                  (removeUserStoryEvent)="deleteUserStory($event)"
+                  [usersData]="users"
+                  [resourceData]="story"
+                ></app-task-board-work-item>
+              </div>
+
+              <div class="cells col-3">
+                <div data-state="Active" class="example-container">
+                  <div
+                    cdkDropList
+                    [cdkDropListData]="
+                      story.resourceChild
+                        | customListStatusFilterPipe: activeFilterargs
+                    "
+                    class="example-list"
+                    cdkDropListSortingDisabled
+                    (cdkDropListDropped)="drop($event)"
+                  >
+                    <div
+                      class="example-box"
+                      *ngFor="
+                        let activeTask of story.resourceChild
+                          | customListStatusFilterPipe: activeFilterargs
+                      "
+                      cdkDrag
+                    >
+                      <app-task-board-work-item
+                        (dataChangeEvent)="GridDataChanged($event)"
+                        (openDialogToUpdateDataEvent)="openDialogToUpdateData($event, 'Task')"
+                        [priorityData]="priority"
+                        [usersData]="users"
+                        [resourceData]="activeTask"
+                        (removeTaskorBugEvent)="deleteTaskOrBug($event)"
+                      ></app-task-board-work-item>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cells col-3">
+                <div data-state="Resolved" class="example-container">
+                  <div
+                    cdkDropList
+                    [cdkDropListData]="
+                      story.resourceChild
+                        | customListStatusFilterPipe: resolvedFilterargs
+                    "
+                    class="example-list"
+                    cdkDropListSortingDisabled
+                    (cdkDropListDropped)="drop($event)"
+                  >
+                    <div
+                      class="example-box"
+                      *ngFor="
+                        let resolvedTask of story.resourceChild
+                          | customListStatusFilterPipe: resolvedFilterargs
+                      "
+                      cdkDrag
+                    >
+                      <app-task-board-work-item
+                        (dataChangeEvent)="GridDataChanged($event)"
+                        (openDialogToUpdateDataEvent)="openDialogToUpdateData($event, 'Task')"
+                        [priorityData]="priority"
+                        [usersData]="users"
+                        [resourceData]="resolvedTask"
+                        (removeTaskorBugEvent)="deleteTaskOrBug($event)"
+                      ></app-task-board-work-item>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cells col-3">
+                <div data-state="Closed" class="example-container">
+                  <div
+                    cdkDropList
+                    [cdkDropListData]="
+                      story.resourceChild
+                        | customListStatusFilterPipe: closedfilterargs
+                    "
+                    class="example-list"
+                    cdkDropListSortingDisabled
+                    (cdkDropListDropped)="drop($event)"
+                  >
+                    <div
+                      class="example-box"
+                      *ngFor="
+                        let closedTask of story.resourceChild
+                          | customListStatusFilterPipe: closedfilterargs
+                      "
+                      cdkDrag
+                    >
+                      <app-task-board-work-item
+                        (dataChangeEvent)="GridDataChanged($event)"
+                        (openDialogToUpdateDataEvent)="openDialogToUpdateData($event, 'Task')"
+                        [priorityData]="priority"
+                        [usersData]="users"
+                        [resourceData]="closedTask"
+                        (removeTaskorBugEvent)="deleteTaskOrBug($event)"
+                      ></app-task-board-work-item>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Task Board End -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Content end -->

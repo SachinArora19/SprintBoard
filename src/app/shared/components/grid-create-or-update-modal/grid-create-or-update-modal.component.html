@@ -1,0 +1,26 @@
+<h1 mat-dialog-title *ngIf="data.ActionType == 'Add' && data.ActionOn == 'Story'">Add Story</h1>
+<h1 mat-dialog-title *ngIf="data.ActionType == 'Add' && data.ActionOn == 'Task'">Add Task</h1>
+<h1 mat-dialog-title *ngIf="data.ActionType == 'Add' && data.ActionOn == 'Bug'">Add Bug</h1>
+<h1 mat-dialog-title *ngIf="data.ActionType == 'Update' && data.ActionOn == 'Story'">Update Story</h1>
+<h1 mat-dialog-title *ngIf="data.ActionType == 'Update' && data.ActionOn == 'Task' && data.data.resourceType=='Task'">Update Task</h1>
+<h1 mat-dialog-title *ngIf="data.ActionType == 'Update' && data.ActionOn == 'Task' && data.data.resourceType=='Bug'">Update Bug</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>ID</mat-label>
+    <input matInput [(ngModel)]="data.data.resourceId">
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="data.data.resourceTitle">
+  </mat-form-field>
+<br />
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput [(ngModel)]="data.data.resourceDescription">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>

@@ -1,0 +1,59 @@
+
+
+.userStoryBlock {
+  border: 1px solid blue;
+  margin-top: 5%;
+  border-left: 3px solid blue;
+  width: 100%;
+  height: 250px;
+  background-color: white;
+  text-align: left;
+}
+
+.userStoryTitleText {
+  &:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.taskBlock {
+  border: 1px solid yellow;
+  margin: 1%;
+  border-left: 3px solid yellow;
+  width: 225px;
+  height: 17%;
+  background-color: white;
+  text-align: left;
+}
+
+.bugBlock {
+  border: 1px solid red;
+  margin: 1%;
+  border-left: 3px solid red;
+  width: 225px;
+  height: 17%;
+  background-color: white;
+  text-align: left;
+}
+
+.userStoryBlockRow {
+  padding: 3%;
+  font-size: 1em;
+  display: flex;
+}
+
+.userStoryIconField {
+  color: blue;
+  font-size: 1.5em;
+}
+
+.taskIconField {
+  color: yellow;
+  font-size: 1.5em;
+}
+
+.bugIconField {
+  color: red;
+  font-size: 1.5em;
+}

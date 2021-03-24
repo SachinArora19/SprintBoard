@@ -1,0 +1,99 @@
+{
+  "users": [
+    {"userId": "user1", "userName":"Sachin"},
+    {"userId": "user2", "userName":"Rakshit"},
+    {"userId": "user3", "userName":"Sathish"}
+  ],
+  "priority": [
+    {"value": 0, "view": "Low"},
+    {"value": 1, "view": "Medium"},
+    {"value": 2, "view": "High"},
+    {"value": 3, "view": "Critical"}
+  ],
+  "boardData":[
+    {"resourceId": "US#1",
+      "resourceTitle": "User Story 1 Title",
+      "resourceDescription": "User Story 1 description",
+      "resourceStoryPoints": 13,
+      "resourceOwner": "user1",
+      "resourceType": "US",
+      "resourceChild": [
+        {
+          "resourceId": "Task#1ofUS#1",
+          "resourceTitle": "Task 1 of US 1 Title",
+          "resourceDescription": "Task 1 of User Story 1 description",
+          "resourceStoryPoints": 5,
+          "resourceOwner": "user1",
+          "resourceType": "Task",
+          "resourceChild": null,
+          "state": "Active",
+          "priority": 3
+        },
+        {
+          "resourceId": "Task#2ofUS#1",
+          "resourceTitle": "Task 2 of US 1 Title",
+          "resourceDescription": "Task 2 of User Story 1 description",
+          "resourceStoryPoints": 25,
+          "resourceOwner": "user2",
+          "resourceType": "Task",
+          "resourceChild": null,
+          "state": "Resolved",
+          "priority": 2
+        },
+        {
+          "resourceId": "Bug#1ofUS#1",
+          "resourceTitle": "Bug 1 of US 1 Title",
+          "resourceDescription": "Bug 1 of User Story 1 description",
+          "resourceStoryPoints": 2,
+          "resourceOwner": "user3",
+          "resourceType": "Bug",
+          "resourceChild": null,
+          "state": "Closed",
+          "priority": 1
+        }
+      ]
+    },
+    {"resourceId": "US#2",
+      "resourceTitle": "User Story 2 Title",
+      "resourceDescription": "User Story 2 description",
+      "resourceStoryPoints": 5,
+      "resourceOwner": "user3",
+      "resourceType": "US",
+      "resourceChild": [
+        {
+          "resourceId": "Task#1ofUS#2",
+          "resourceTitle": "Task 1 of US 2 Title",
+          "resourceDescription": "Task 1 of User Story 2 description",
+          "resourceStoryPoints": 5,
+          "resourceOwner": "user2",
+          "resourceType": "Task",
+          "resourceChild": null,
+          "state": "Closed",
+          "priority": 2
+        },
+        {
+          "resourceId": "Bug#1ofUS#2",
+          "resourceTitle": "Bug 1 of US 2 Title",
+          "resourceDescription": "Bug 1 of User Story 2 description",
+          "resourceStoryPoints": 2,
+          "resourceOwner": "user1",
+          "resourceType": "Bug",
+          "resourceChild": null,
+          "state": "Active",
+          "priority": 1
+        },
+        {
+          "resourceId": "Bug#2ofUS#2",
+          "resourceTitle": "Bug 2 of US 2 Title",
+          "resourceDescription": "Bug 2 of User Story 2 description",
+          "resourceStoryPoints": 1,
+          "resourceOwner": "user2",
+          "resourceType": "Bug",
+          "resourceChild": null,
+          "state": "Active",
+          "priority": 0
+        }
+      ]
+    }
+  ]
+}

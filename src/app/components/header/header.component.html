@@ -1,0 +1,43 @@
+<header id="header">
+    <div class="container">
+      <div class="header-row">
+        <div class="header-column justify-content-start">
+          <!-- Logo
+          ============================= -->
+          <div class="logo"> <a class="d-flex logoImg" href="index.html" title="Vistex"><img src="../../../assets/images/logo.svg" alt="Vistex" /></a> </div>
+          <!-- Logo end -->
+          <!-- Collapse Button
+          ============================== -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-nav"> <span></span> <span></span> <span></span> </button><!-- Collapse Button end -->
+
+          <!-- Menu Navigation
+          ============================== -->
+          <nav class="primary-menu navbar navbar-expand-lg">
+            <div id="header-nav" class="collapse navbar-collapse">
+              <ul class="navbar-nav mr-auto">
+                <li *ngIf="!isLoggedIn"><a routerLink="/welcome/home" routerLinkActive="active menuSelected">Home</a></li>
+                <li *ngIf="!isLoggedIn"><a routerLink="/welcome/aboutus" routerLinkActive="active menuSelected">About Us</a></li>
+
+                <li *ngIf="isLoggedIn"><a routerLink="/welcome/dashboard" routerLinkActive="active menuSelected">Dashboard</a></li>
+                <li *ngIf="isLoggedIn"><a routerLink="/welcome/burndown" routerLinkActive="active menuSelected">Burndown</a></li>
+              </ul>
+            </div>
+          </nav>
+          <!-- Menu Navigation end -->
+        </div>
+
+        <div class="header-column justify-content-end">
+          <!-- Login, Logout & Signup Link
+          ============================== -->
+          <nav class="login-signup navbar navbar-expand">
+            <ul class="navbar-nav">
+              <li *ngIf="!isLoggedIn"><a routerLink="/login" routerLinkActive="active">Login</a> </li>
+              <li *ngIf="!isLoggedIn" class="align-items-center h-auto ml-sm-3"><a class="btn btn-primary d-none d-sm-block" routerLink="/signup" routerLinkActive="active">Sign Up</a></li>
+              <li *ngIf="isLoggedIn" class="align-items-center h-auto ml-sm-3"><a class="btn btn-primary d-none d-sm-block" routerLink="/signout" routerLinkActive="active">Sign Out</a></li>
+            </ul>
+          </nav>
+          <!-- Login, Logout & Signup Link end -->
+        </div>
+      </div>
+    </div>
+  </header>

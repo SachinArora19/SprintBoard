@@ -1,0 +1,67 @@
+<div [class]=" resourceData.resourceType == 'US' ? 'userStoryBlock': resourceData.resourceType == 'Task' ? 'taskBlock': 'bugBlock'">
+  <div style="float:right" class="userStoryBlockRow">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <span class="material-icons">more_vert</span>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button *ngIf="resourceData.resourceType == 'US'" (click)="openDialogToAddTask()" mat-menu-item>
+        <span class="material-icons taskIconField">add_circle</span>
+        <span>Add Task</span>
+      </button>
+      <button *ngIf="resourceData.resourceType == 'US'" (click)="openDialogToAddBug()" mat-menu-item>
+        <span class="material-icons bugIconField">add_circle</span>
+        <span>Add Bug</span>
+      </button>
+      <button *ngIf="resourceData.resourceType == 'US'" (click)="removeUserStory()" mat-menu-item>
+        <span class="material-icons userStoryIconField">do_not_disturb_on</span>
+        <span>Delete US</span>
+      </button>
+      <button *ngIf="resourceData.resourceType != 'US'" (click)="removeTaskOrBug()" mat-menu-item>
+        <span class="material-icons">do_not_disturb_on</span>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+  </div>
+  <div (click)="openDialogToUpdateData()" class="userStoryTitle userStoryBlockRow">
+    <ng-container *ngIf="resourceData.resourceType == 'US'; else task">
+      <span class="material-icons userStoryIconField">import_contacts</span>
+    </ng-container>
+    <ng-template #task>
+      <ng-container *ngIf="resourceData.resourceType == 'Task'; else bug">
+        <span class="material-icons taskIconField">task</span>
+      </ng-container>
+    </ng-template>
+    <ng-template #bug>
+      <span class="material-icons bugIconField">bug_report</span>
+    </ng-template>
+
+    &nbsp;&nbsp;<span class="userStoryTitleText"><b>{{resourceData.resourceId}}</b><br />{{resourceData.resourceTitle}}</span>
+  </div>
+
+  <div class="gridDropdown userStoryBlockRow">
+    <mat-form-field appearance="fill">
+      <mat-label>Owner</mat-label>
+      <mat-select (selectionChange)="dataChanged()" [(ngModel)]="resourceData.resourceOwner">
+        <mat-option *ngFor="let user of usersData" [value]="user.userId">{{
+          user.userName
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div *ngIf="priorityData" class="gridDropdown userStoryBlockRow">
+    <mat-form-field appearance="fill">
+      <mat-label>Priority</mat-label>
+      <mat-select (selectionChange)="dataChanged()" [(ngModel)]="resourceData.priority">
+        <mat-option *ngFor="let item of priorityData" [value]="item.value">{{
+          item.view
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div *ngIf="resourceData.resourceType == 'US'" class="userStoryPoints userStoryBlockRow">
+    <mat-form-field class="example-form-field">
+      <mat-label>Story Point</mat-label>
+      <input matInput type="text" (change)="dataChanged()" [(ngModel)]="resourceData.resourceStoryPoints" />
+    </mat-form-field>
+  </div>
+</div>
